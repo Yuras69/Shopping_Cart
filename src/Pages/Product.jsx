@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../Components/NavBar';
 import AxiosInstance from '../utils/AxiosInstance';
 import { useContext } from 'react';
-
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -42,7 +41,9 @@ const Product = () => {
                 {products.map((product) => (
                     <div key={product.id}>
                         <p>{product.name}</p>
-                        <button onClick={() => handleClick(product)}  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Details of Product</button>
+                        <Link to={`/Product/${product.id}`  }>
+                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Details of Product</button>
+                         </Link>       
                     </div>
                 ))}
             </div>
