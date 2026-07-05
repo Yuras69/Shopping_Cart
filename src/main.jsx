@@ -7,6 +7,7 @@ import Cart from './Pages/Cart'
 import Contact from './Pages/Contact'
 import Product from './Pages/Product'
 import ProductAdd from './Pages/ProductAdd'
+import ProductEdit from './Pages/ProductEdit'
 import CartProvider from './Context/CartContext'
 
 
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/Contact" element={<Contact />} />
       <Route path="/Product" element={<Product />} />
       <Route path="/ProductAdd" element={<ProductAdd />} />
+      <Route path="/ProductEdit" element={<ProductEdit />} />
     </Routes>
     </BrowserRouter>
     </CartProvider>

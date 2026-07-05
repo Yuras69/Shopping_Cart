@@ -2,12 +2,11 @@
  import NavBar from '../Components/NavBar';
  import AxiosInstance from '../utils/AxiosInstance';
  import { useContext } from 'react';
- import ProductEdit from './Product';
- import { Link } from 'react-router-dom';
  
 
- const ProductAdd = () => {
-    
+
+ const ProductEdit = () => {
+
      const [products, setProducts] = useState([]);
      const [error, setError] = useState(null);
  
@@ -18,11 +17,9 @@
     
 
      
- async function updateProduct(name,price,quantity) {
-        const response = await AxiosInstance.post("/Product", {
-            id: 1,
-            name: "Ashwin",
-            price: 100,
+ async function ProductEdit(name,price,quantity) {
+        const response = await AxiosInstance.put("/Product/:id", {
+
         });
         if (response.status === 200) {
             getProducts();
@@ -33,7 +30,7 @@
 
     }
     const handleChange = async () => {
-    const response = await AxiosInstance.post("/Product", {
+    const response = await AxiosInstance.put("/Product/:id", {
             name,
             price,
             quantity,
@@ -45,6 +42,7 @@
             setError(response.error);
         }
     }
+
     return (
         <>
             <NavBar />
@@ -52,18 +50,13 @@
                 <input type="text" placeholder="Enter Product Name" className="w-full p-2 border border-gray-300 rounded-md" value={name} onChange={(e) => setName(e.target.value)} />
                 <input type="number" placeholder="Enter Product Price" className="w-full p-2 border border-gray-300 rounded-md" value={price} onChange={(e) => setPrice(e.target.value)} />
                 <input type="number" placeholder="Enter Product Quantity" className="w-full p-2 border border-gray-300 rounded-md"  value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
-                <button onClick={handleChange} className="w-full bg-blue-500 text-white px-4 py-2 rounded-md gap-9">Add Product</button>
-                <Link to= "/ProductEdit">
-                <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md gap-9">Edit Product</button>
-                </Link>
- 
+                <button onClick={handleChange} className="w-full bg-blue-500 text-white px-4 py-2 rounded-md gap-9">Save Change</button>
                 
             </div>
         </>
         
-
     )
 
  }
     
- export default ProductAdd
+ export default ProductEdit
